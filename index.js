@@ -32,9 +32,13 @@ async function answerQuestion(userInput) {
   }
 }
 
+console.log("############");
+
 console.log(
-  "Welcome to your personal AI tutor, feel free to ask any question on machine learning or type EXIT to close the chat"
+  "Welcome to your personal AI tutor, feel free to ask any question on machine learning, or any other topic. Type EXIT to close the chat"
 );
+
+console.log("############");
 
 rl.prompt();
 
@@ -49,6 +53,8 @@ rl.on("line", async (line) => {
   await answerQuestion(userInput);
   rl.prompt();
 }).on("close", () => {
-  console.log("Session ended.");
+  console.log(
+    "Thanks for using AI TUTOR, if you have other questions feel free to re-run the program and ask."
+  );
   process.exit(0);
 });
