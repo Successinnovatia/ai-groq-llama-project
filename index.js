@@ -2,7 +2,9 @@ const Groq = require("groq-sdk");
 require("dotenv").config();
 const readline = require("readline");
 
-const groq = new Groq({ apiKey: process.env.GROQ_API_KEY });
+const groq = new Groq({
+  apiKey: process.env.GROQ_API_KEY,
+});
 
 const rl = readline.createInterface({
   input: process.stdin,
@@ -17,8 +19,9 @@ async function answerQuestion(userInput) {
         {
           role: "system",
           content:
-            "You are an AI tutor that answers questions, explains machine learning algorithms, and guides users through their learning journey.",
-
+            "You are an AI tutor that answers questions related to only AI and machine learning. When asked questions outside this domain you should give a reply that you are just an AI tutor.",
+        },
+        {
           role: "user",
           content: userInput,
         },
@@ -35,7 +38,7 @@ async function answerQuestion(userInput) {
 console.log("############");
 
 console.log(
-  "Welcome to your personal AI tutor, feel free to ask any question on machine learning, or any other topic. Type EXIT to close the chat"
+  "Welcome to your personal AI tutor, feel free to ask any question on machine learning, or any other topic related to AI. Type EXIT to close the chat"
 );
 
 console.log("############");
